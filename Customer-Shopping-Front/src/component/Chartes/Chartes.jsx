@@ -1,15 +1,23 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import './Chartes.scss'
+import { getAll } from '../../features/auth/AuthSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 const Chart = ({ data }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAll());
+  }, []);
+  
+  const { user } = useSelector((state) => state.auth);
   const ref = useRef();
   useEffect(() => {
     if (!data || !Array.isArray(data)) {
       console.error('Data must be an array');
       return;
     }
-
+    
     const width = 400;
     const height = 400;
     const radius = Math.min(width, height) / 2;
@@ -21,7 +29,7 @@ const Chart = ({ data }) => {
       .attr('transform', `translate(${width / 2},${height / 2})`);
 
     const color = d3.scaleOrdinal()
-      .domain(data.map(d => d.name))
+      .domain(user.map(d => d.name))
       .range(d3.schemeCategory10);
 
     const pie = d3.pie()
