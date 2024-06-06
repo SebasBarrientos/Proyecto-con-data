@@ -16,7 +16,7 @@ const SaleController = {
         try {
 
             console.log("asdnkasndjasbdjhasdjb");
-           const sales = await Sale.find()
+           const sales = await Sale.find().limit(5)
            res.send(sales)
         } catch (error) {
             console.error(error);

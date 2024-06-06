@@ -4,13 +4,19 @@ import './Chartes.scss'
 import { getAll } from '../../features/auth/AuthSlice';
 import { useDispatch, useSelector } from "react-redux";
 
-const Chart = ({ data }) => {
+const Chart = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAll());
   }, []);
   
   const { user } = useSelector((state) => state.auth);
+
+  const data = user.map((x,i) =>{
+    return {
+        name:i,value:x.age
+    }
+  })
   const ref = useRef();
   useEffect(() => {
     if (!data || !Array.isArray(data)) {
