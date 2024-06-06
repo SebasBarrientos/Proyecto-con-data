@@ -1,0 +1,14 @@
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;  // Añade espacio entre el gráfico y el header
+  }
+  
+  svg {
+    border: 1px solid #ccc; // Añade un borde para diferenciar el gráfico
+    background-color: #f9f9f9; // Añade un fondo claro
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  

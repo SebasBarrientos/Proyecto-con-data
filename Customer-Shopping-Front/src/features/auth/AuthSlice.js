@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import authService from './AuthService'
+
+
 const user = JSON.parse(localStorage.getItem("user")) || null;
 
 
@@ -33,7 +35,7 @@ const authSlice = createSlice({
     },
     extraReducers: (builder)=>{
         builder
-        .addCase(getUserById.fulfilled,(state,action)=>{
+        .addCase(getAll.fulfilled,(state,action)=>{
             state.user = action.payload.user
         })
     } 
